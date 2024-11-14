@@ -9,12 +9,32 @@ import {
 import { productInfo } from "../../utilities/qa-data-reader.js";
 import { ReviewPaymentPage } from "../../pages/ReviewPaymentPage.js";
 
-Given("user has completed step one with valid information", async function () {
+Given("user fills in only the required fields", async function () {
   await startApplicationPage.firstNameInputBox.fill("John");
   await startApplicationPage.lastNameInputBox.fill("Doe");
   await startApplicationPage.emailInputBox.fill("john@example.com");
   await startApplicationPage.phoneNumberInputBox.fill("555-555-5555");
 });
+
+Given("user fills in all fields", async function () {
+  await startApplicationPage.firstNameInputBox.fill("Monica");
+  await startApplicationPage.lastNameInputBox.fill("Bellucci");
+  await startApplicationPage.emailInputBox.fill("monica@example.belucci.com");
+  await startApplicationPage.phoneNumberInputBox.fill("777-771-7171");
+  await startApplicationPage.howDidYouHearAboutUsDropDown.click();
+  await startApplicationPage.googleOption.click();
+});
+
+
+
+
+
+Then("the next button1 is enabled", async function () {
+  await expect(startApplicationPage.nextButton).toBeVisible();
+  await expect (startApplicationPage.nextButton).toBeEnabled();
+});
+
+
 
 Then("user clicks on the next button1", async function () {
   await startApplicationPage.nextButton.click();
@@ -24,7 +44,7 @@ When("user is on step two of the enrollment process", async function () {
   await expect(paymentPlanPage.chooseAPaymentPlanText).toBeVisible();
 });
 
-Then("the next button is disabled by default", async function () {
+Then("the next button2 is disabled by default", async function () {
   await expect(paymentPlanPage.activeNextButton).toBeHidden();
 
   await expect(paymentPlanPage.inactiveNextButton).toBeVisible();
@@ -38,7 +58,7 @@ When("user clicks upfront payment option", async function () {
   // await page.waitForTimeout(1000);
 });
 
-Then("the next button will be enabled", async function () {
+Then("the next button2 is enabled", async function () {
   await expect(paymentPlanPage.activeNextButton).toBeVisible();
   await expect (paymentPlanPage.activeNextButton).toBeEnabled();
 });
@@ -72,7 +92,7 @@ Then("check if step 3 is blue", async function () {
   await expect(paymentPlanPage.step3).toHaveCSS("background-color", "rgb(1, 201, 255)");
 });
 
-Then("user is on third step and can see the total cost", async function () {
+Then("user is on step three and can see the total cost", async function () {
   await expect (reviewPaymentPage.totalAmount).toBeVisible();
 });
 

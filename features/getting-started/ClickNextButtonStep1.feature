@@ -10,15 +10,22 @@ Feature: Click on the next button on step 1
 
     #TODO: Create scenarios that cover all the acceptance criteria
 
-    #Background:
-    #    Given user is on the enrollment page
+    Background:
+        Given user is on the enrollment page
 
-    #Scenario: Verify if the next button is clickable after valid information is provided
-    #    #Given user is on the enrollment page
-    #    When user fills in only the required fields    
-    #    And clicks on the next button
-    #    Then next page is opened
+    @sep19-1
+    Scenario: Verify if the next button is clickable after filling in only the required fields
 
+        When user fills in only the required fields
+        And  the next button1 is enabled
+        Then user clicks on the next button1
+        Then user is on step two of the enrollment process
 
+    @sep19-2
+    Scenario: Verify if the next button is clickable after filling in all fields
 
+        When user fills in all fields
+        And  the next button1 is enabled
+        Then user clicks on the next button1
+        Then user is on step two of the enrollment process
 
