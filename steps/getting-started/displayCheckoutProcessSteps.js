@@ -4,7 +4,7 @@ import { startApplicationPage, page } from "../../globalPagesSetup.js";
 import { productInfo } from "../../utilities/qa-data-reader.js";
 import { text } from "stream/consumers";
 
-When("user is on the step one and 'Test Automation with Selenium' title is displayed", async function () {
+Given("user is on the step one and 'Test Automation with Selenium' title is displayed", async function () {
    const programNameOnInfoCardExpected = "Test Automation with Selenium";
    const programNameOnInfoCardActual = await (startApplicationPage.programNameOnInfoCard).textContent();
    // console.log("");
