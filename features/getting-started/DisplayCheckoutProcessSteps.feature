@@ -9,3 +9,23 @@ Feature: Display the steps of the checkout process
 
 
     #TODO: Create scenarios that cover all the acceptance criteria
+
+    Background:
+        Given user is on the enrollment page
+        When user is on the step one and 'Test Automation with Selenium' title is displayed
+
+    Scenario: verify that the steps of the checkout process are displayed correctly
+        Then '1-Start Application' is displayed on the stepper
+        And  '2-Payment Plan' is displayed on the stepper
+        And  '3-Review' is displayed on the stepper
+    
+    Scenario: verify Start Application collor
+        Then 'Start Application' is highlighted in blue
+    
+    Scenario: verify Payment Plan and Review collors
+        Then 'Payment Plan' is highlighted in grey
+        And 'Review' is highlighted in grey
+
+
+
+

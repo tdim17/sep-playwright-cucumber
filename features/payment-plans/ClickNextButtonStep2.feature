@@ -87,13 +87,13 @@ Feature: Click on the next button on payment plans page   #! Test Only
     Scenario: verify that the total prise is displayed when the user comes to step 3 by selecting upfront payment option
         When user clicks upfront payment option
         And user clicks on the next button2
-        Then user is on third step and can see the total cost
+        Then user is on step three and can see the total cost
 
     @sep16-11
     Scenario: verify that the total prise is displayed when the user comes to step 3 by selecting installments payment option
         When user clicks installments payment option
         And user clicks on the next button2
-        Then user is on third step and can see the total cost
+        Then user is on step three and can see the total cost
 
 
     #* AC6: The back button should be displayed.

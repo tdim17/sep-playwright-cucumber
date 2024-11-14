@@ -92,7 +92,7 @@ Then("check if step 3 is blue", async function () {
   await expect(paymentPlanPage.step3).toHaveCSS("background-color", "rgb(1, 201, 255)");
 });
 
-Then("user is on third step and can see the total cost", async function () {
+Then("user is on step three and can see the total cost", async function () {
   await expect (reviewPaymentPage.totalAmount).toBeVisible();
 });
 
