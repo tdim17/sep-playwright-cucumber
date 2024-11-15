@@ -14,13 +14,3 @@ Feature: Enter my Personal details
 
     #TODO: Create scenarios that cover all the acceptance criteria
 
-    Background:
-        Given user is on the enrollment page
-        When user is on the step one and 'Test Automation with Selenium' title is displayed
-
-
-    Scenario: verify that user is able to enter personal details
-        Given
-        Given I am on the 'Checkout' page enter my Personal details
-        And I fill in the 'First Name' field with 'John'
-
