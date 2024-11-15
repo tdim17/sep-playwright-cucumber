@@ -28,11 +28,23 @@ Feature: Enter my Personal details
         Then 'last name' input field is visible
         And text field is present in 'last name'
         Then 'email address' input field is visible
-        And text field is present and validates for email format in 'email address'
+        And 'email address' text field is present
         Then 'phone' input field is visible
-        And text field allows numbers only in 'phone'
+        And 'phone' text field is present
 
     @sep10-3
+    Scenario: verify that 'email address' field only allows strict limited format
+        Given user fills in only the required fields        
+        Then 'email address' text field validates for email format
+
+    @sep10-4
+    Scenario: verify that 'phone' field only allows numbers
+        Given user fills in only the required fields    
+        Then 'phone' text field allows numbers only
+
+
+
+    @sep10-5
     #* AC2: "How did you hear about us?" A standard dropdown list is present.
 
     Scenario: verify that a standard dropdown list is present
@@ -42,8 +54,8 @@ Feature: Enter my Personal details
 
     #* AC3: The 'Next' button should be disabled if any required data is missing or invalid.
 
-    @sep10-4
+    @sep10-6
     Scenario: verify that the next button is disabled if any required data is missing or invalid
         When user fills in only the required fields
         And user deleted required field last name
-    #    Then next button1 is disabled
+        Then next button1 is disabled
