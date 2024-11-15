@@ -91,6 +91,11 @@ export class StartApplicationPage extends BasePage {
     );
     this.discountedPrice = page.locator("//b[@class='info-primary']");
     this.originalPrice = page.locator("//s[contains(.,'$')]");
+
+    // element of dropdown options:
+    this.dropdownOptions = page.locator("mat-option");
+
+    // form
+    this.applicationForm = page.locator("//form");
   }
 }
-

@@ -16,11 +16,34 @@ Feature: Enter my Personal details
 
     Background:
         Given user is on the enrollment page
-        When user is on the step one and 'Test Automation with Selenium' title is displayed
+
+    #* AC1: Default field types and values should be as follows:
+    @sep10-1
+    Scenario: verify that user is on the step one page
+        Given user is on the step one and 'Test Automation with Selenium' title is displayed
+    @sep10-2
+    Scenario: verify that default field types and values should be next
+        Then 'first name' input field is visible
+        And text field is present in 'first name'
+        Then 'last name' input field is visible
+        And text field is present in 'last name'
+        Then 'email address' input field is visible
+        And text field is present and validates for email format in 'email address'
+        Then 'phone' input field is visible
+        And text field allows numbers only in 'phone'
+
+    @sep10-3
+    #* AC2: "How did you hear about us?" A standard dropdown list is present.
+
+    Scenario: verify that a standard dropdown list is present
+        Then dropdovn list is visible in the dropdown window
+        Then dropdown contains list of elements
 
 
-    Scenario: verify that user is able to enter personal details
-        Given
-        Given I am on the 'Checkout' page enter my Personal details
-        And I fill in the 'First Name' field with 'John'
+    #* AC3: The 'Next' button should be disabled if any required data is missing or invalid.
 
+    @sep10-4
+    Scenario: verify that the next button is disabled if any required data is missing or invalid
+        When user fills in only the required fields
+        And user deleted required field last name
+    #    Then next button1 is disabled
