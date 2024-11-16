@@ -23,10 +23,10 @@ Then(
     const programNameLeftActual = await leftMainPage.programName.innerText();
     console.log(`programNameLeftActual: ${programNameLeftActual}`);
 
-    const productAcualName = await startApplicationPage.programNameOnInfoCard.innerText();
-    console.log(`productAcualName: ${productAcualName}`);
+    const productNameAcual = await startApplicationPage.programNameOnInfoCard.innerText();
+    console.log(`productAcualName: ${productNameAcual}`);
 
-    expect(programNameLeftActual).toEqual(productAcualName);
+    expect(programNameLeftActual).toEqual(productNameAcual);
   }
 );
 
