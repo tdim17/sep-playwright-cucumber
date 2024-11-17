@@ -42,15 +42,11 @@ Feature: Enter my Personal details
         Given user fills in only the required fields    
         Then 'phone' text field allows numbers only
 
-
-
-    @sep10-5
     #* AC2: "How did you hear about us?" A standard dropdown list is present.
-
+    @sep10-5   
     Scenario: verify that a standard dropdown list is present
         Then dropdovn list is visible in the dropdown window
         Then dropdown contains list of elements
-
 
     #* AC3: The 'Next' button should be disabled if any required data is missing or invalid.
 

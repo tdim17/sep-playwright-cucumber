@@ -73,6 +73,7 @@ export class StartApplicationPage extends BasePage {
       "//div[contains(text(), 'Program Start Date')]/b[@class='info-value']"
     );
     this.refundEndDate = page.locator("(//b[@class='info-value'])[2]");
+    // Program Name:
     this.programNameOnInfoCard = page.locator(
       "//p[@class='program-title primary-color']"
     );
@@ -92,10 +93,10 @@ export class StartApplicationPage extends BasePage {
     this.discountedPrice = page.locator("//b[@class='info-primary']");
     this.originalPrice = page.locator("//s[contains(.,'$')]");
 
-    // element of dropdown options:
-    this.dropdownOptions = page.locator("mat-option");
+    this.returnPolicyText = page.locator("//span[@class='info-primary' and text()='100% refund']");
 
-    // form
-    this.applicationForm = page.locator("//form");
+
+
+
   }
 }
