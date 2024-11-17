@@ -27,7 +27,8 @@ Feature: View Product Landing Page
     #* AC2: The system should display the program name
     Scenario: the program name has to be displayed
         Then 'program name' has to be displayed
-
+    
+    @sep07-3
     #* AC3: Users should see a footer on the left side of the page that includes by order:
     #*      logo, Terms and Conditions, Privacy Policy, Disclaimer, Cookie Policy
     Scenario: the footer has to be displayed on the leftMain page
@@ -37,12 +38,13 @@ Feature: View Product Landing Page
         And 'Disclaimer' has to be displayed on the leftMain page
         And 'Cookie Policy' has to be displayed on the leftMain page
 
-
+    @sep07-4
     #* AC4: The system displays "Need help? Contact us at enrollment@cydeo.com" in the footer on the right.
     Scenario: the 'contact us' text has to be displayed in the footer
         Then 'contact us' has to be displayed in the footer on the right page
 
+    
     #* AC5: The system should be compatible with both desktop and mobile devices.
-    Scenario: check the copability of the system with desktop and mobile
-        Then system should be cross-platform capable
+    #Scenario: check the compatibility of the system with desktop and mobile
+    #    Then system should be cross-platform capable
 
