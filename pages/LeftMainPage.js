@@ -14,6 +14,20 @@ export class LeftMainPage extends BasePage {
       "//a[contains(@href, 'https://cydeo.com/')]"
     );
     this.programName = page.locator("//p[@class='course-name']/a");
+
+    // -----------------------------------
+
+    this.footerBlock = page.locator(".footer-row");
+
+    this.logo = page.locator('.details-footer img[src="assets/images/logo.svg"]');
+
+    
+
+
+
+
+
+
     
   }
 
