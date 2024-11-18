@@ -17,7 +17,7 @@ export class PaymentPlanPage extends BasePage {
       "//span[@class='discount-price']/span"
     );
     this.upfrontPaymentFrame = page.locator(
-      "(//mat-expansion-panel-header[@role='button'])[1]"
+      "//div[@class='content-panel-item ng-star-inserted']/i[contains(text(), 'excluding fees')]"
     );
     this.greenBadgeUpfrontDiscount = page.locator(
       "//span[@class='chip-content']"
