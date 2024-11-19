@@ -16,20 +16,23 @@ Then('tex the first row should be {string}', async function (string) {
 });
 
 Then('the second row should be "{string} pay once"', async function (price) {    
-    //text should be: "$ <upfont_price> pay once"
-    const secondRowTextExpected = `${price} pay once` ;
-    console.log("secondRowTextExpected : " +secondRowTextExpected);
-
-    const upfrontPaymentAmountTextRetrieved = await paymentPlanPage.upfrontPaymentAmount.innerText();
-    console.log("upfrontTextRetrieved: " + upfrontPaymentAmountTextRetrieved);
-
-    let upfupfrontPaymentAmountActual = await paymentPlanPage.upfrontPaymentAmount.textContent();
-    console.log(' AMOUNT: ' + upfupfrontPaymentAmountActual.trim());
     
+    const secondRowTextExpected = `${price} pay once`;
+    const upfrontPaymentAmountTextRetrieved = await paymentPlanPage.upfrontPaymentAmount.innerText();
+
+    /* This case works too, but the next is better!    
+    console.log("secondRowTextExpected : " + secondRowTextExpected);
+    console.log("upfrontTextRetrieved  : " + upfrontPaymentAmountTextRetrieved);
+
+    expect (secondRowTextExpected).toBe(upfrontPaymentAmountTextRetrieved);
+    
+    let upfupfrontPaymentAmountActual = await paymentPlanPage.upfrontPaymentAmount.textContent();
+    console.log(' AMOUNT: ' + upfupfrontPaymentAmountActual.trim());    
     let secondRowTextRetrieved = await paymentPlanPage.payOnceTextUpFront.textContent();
     console.log(' TEXT: ' + secondRowTextRetrieved.trim());
+    */  
 
-    console.log("------------------------------------------------");
+    console.log("--------------------- The best solution ---------------------------");
 
     // SUPERB IDEA!!!
     const [amountActual, paymentTextActual] = upfrontPaymentAmountTextRetrieved.split(/\s+(?=\w+\s+once)/);
@@ -40,27 +43,27 @@ Then('the second row should be "{string} pay once"', async function (price) {
     console.log("secondRowTextActual concatenated : " + secondRowTextActual);
 
     expect (secondRowTextExpected).toEqual(secondRowTextActual);
+});
 
 
+Then('there must be total {string} Payment Plans', async function (string) {
 
+});
 
-
+Then('there can be {int} installments', async function (instNumber) {
     
+    // const installmentsNumberExpected = installments;
+    console.log("installmentsNumberExpected " + instNumber);
+
+    // const installmentsPaymentOption = await paymentPlanPage.installmentsPaymentOption.innerText();
+
+    // console.log("Object : " + installmentsPaymentOption);
+    
+    // const [instOptionsNumber, installmentsText ] = installmentsPaymentOption.split(/\s+(?=installments)/);
+    // console.log("" +instOptionsNumbe);
 
 
 
-
-
-
-
-});
-
-
-
-Then('there must be total "num" Payment Plans', async function () {
-});
-
-Then('there can be "<number_of_installments> installments"', async function () {
 });
 
 Then('text of first row sould be "{string}"', async function () {
