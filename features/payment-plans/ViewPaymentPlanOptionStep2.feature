@@ -34,11 +34,11 @@ Feature: View payment plan options in Step 2   #! test only
 
     @sep17-2
     Scenario: verify installment price block
-    #    Then there must be total 500 Payment Plans
+    #    Then there must be total 1 Payment Plans
         Then there can be 5 installments
-    #    Then text of first row sould be '<number_of_installments> Installments' 
-    #    Then text of second row sould be '<$ <monthly_price> per month'
-    #    Then installment plans should be unique 
+        Then text of first row sould be "5 Installments" 
+        Then text of second row sould be "$100 per month"
+        Then installment plans should be unique 
 
 
 
