@@ -2,7 +2,9 @@ import { LeftMainPage } from "./pages/LeftMainPage.js";
 import { PaymentPlanPage } from "./pages/PaymentPlanPage.js";
 import { StartApplicationPage } from "./pages/StartApplicationPage.js";
 import { ReviewPaymentPage } from "./pages/ReviewPaymentPage.js";
+import { ConfirmationPage } from "./pages/ComfirmationPage.js";
 // Import OTHER PAGES CLASSES HERE...
+
 
 
 
@@ -30,8 +32,13 @@ export let reviewPaymentPage;
  * @type {import('playwright').Page}
  */
 export let page;
+
 // ADD OTHER PAGE CLASS REFERENCES HERE...
 
+/**
+ * @type {import('./pages/ConfirmationPage.js').ConfirmationPage}
+ */
+export let confirmationPage;
 
 
 
@@ -48,7 +55,6 @@ export const initElements = (argPage) => {
     startApplicationPage = new StartApplicationPage(page);
     reviewPaymentPage = new ReviewPaymentPage(page);
     // INITIALIZE PAGE INSTANCES HERE...
-
-
+    confirmationPage = new ConfirmationPage(page);
 
 };
