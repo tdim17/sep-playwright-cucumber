@@ -1,4 +1,4 @@
-@sep25
+@sep25 @wip
 Feature: Error message for the invalid card number
 
     As a user, I want to be informed when my card info has failed.
@@ -23,11 +23,11 @@ Feature: Error message for the invalid card number
     # AC1:
     Scenario: if the card number is too short then an immediate error message should be thrown
         When user sequentially enters a short card number from 1 to 15 characters
-        Then a message "Your card number is incomplete." should be thrown immediately
+        Then card error message "Your card number is incomplete." should be thrown immediately
 
-# AC2:
-#Scenario: if the card number is wrong an immediate error message should be thrown
-    When user enters the "1111 1111 1111 1111" card number
-    Then a message "Your card number is invalid." should be thrown immediately
+    # AC2:
+    Scenario: if the card number is wrong an immediate error message should be thrown
+        When user enters the "1111 1111 1111 1111" card number
+        Then card error message "Your card number is invalid." should be thrown immediately
 
 
