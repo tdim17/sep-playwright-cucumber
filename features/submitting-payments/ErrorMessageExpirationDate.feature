@@ -24,7 +24,7 @@ Feature: Error messages for the invalid expiration number
         Scenario:
         When user enters the short expiration number
         Then a message "Your card's expiration date is incomplete." should be thrown
-
-    #    Scenario:
-    #    When user enters the "wrong" expiration number
-    #    Then a message "Your card's expiration year is in the past." should be thrown
+        
+        Scenario:
+        When user enters the "1221" expiration number
+        Then a message "Your card's expiration year is in the past." should be thrown
