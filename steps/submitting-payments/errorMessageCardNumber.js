@@ -16,8 +16,9 @@ await cardNumberInputElement.fill("1234");
 await page.click('body');
 });
 
-Then('a message {string} should be thrown immediately', async function (string) {
+Then('card error message {string} should be thrown immediately', async function (string) {
 const errorIncompleteExpected = string;
+errorMessageElement = reviewPaymentPage.cardNumberErrorMessage;
 const errorMessageActual = await errorMessageElement.innerText();
 console.log("errorIncompleteExpected : " + errorIncompleteExpected);
 console.log("errorMessageActual : " + errorMessageActual);
@@ -25,6 +26,7 @@ expect(errorMessageActual).toEqual(errorIncompleteExpected);
 });
 
 When('user enters the {string} card number', async function (cardNumberString) {
+    cardNumberInputElement = reviewPaymentPage.cardNumberInput;
     await cardNumberInputElement.fill(cardNumberString);
     await page.click('body');
 });
