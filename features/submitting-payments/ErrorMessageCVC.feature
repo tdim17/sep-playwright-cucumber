@@ -7,3 +7,21 @@ Feature: Error message for the invalid CVC number
 
 
     #TODO: Create scenarios that cover all the acceptance criteria
+
+
+     Background:
+        Given user is on the enrollment page
+        When user fills in all fields
+        And user clicks on the next button1
+        Then user is on step two of the enrollment process
+        When user clicks upfront payment option
+        #    When user clicks installments payment option
+        And user clicks on the next button2
+        Then user is on step three and can see the total cost
+
+        Scenario:
+        When user enters the short CVC number
+        Then CVC error message "Your card's security code is incomplete." should be thrown    
+
+
+
