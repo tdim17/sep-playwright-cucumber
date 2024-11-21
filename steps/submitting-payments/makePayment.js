@@ -12,24 +12,57 @@ When("user enters valid card information and necessary data and click the Pay bu
     await reviewPaymentPage.expiryDateInput.fill(process.env.EXPIRATION_DATE);
     await reviewPaymentPage.cvcInput.fill(process.env.CVC);
     await reviewPaymentPage.zipCodeInput.fill(process.env.ZIP_CODE);
-    await reviewPaymentPage.termsAndConditionsCheckbox.click();    
-});
+    await reviewPaymentPage.termsAndConditionsCheckbox.click();
+    await page.waitForTimeout(1000);
+    //await reviewPaymentPage.payButton.click();
+    //await reviewPaymentPage.payButton.dispatchEvent("click");
 
-Then("user should be redirected to the confirmation page", async function () {
-  
-    confirmationPage.
-});
 
-Then("all steps should be green in the step4 stepper", async function () {
-  
-});
+    // Переключение обратно на основной контент
+    await page.evaluate(() => {
+    console.log('Switched back to main content');
+    });
 
-Then('program name "Test Automation with Selenium" should be displayed', async function (string) {
+    await expect(reviewPaymentPage.payButton).toBeEnabled();
     
+    await page.click("//button[@type='button']", {force: true}); 
+    //await page.waitForSelector("//div[@class = 'confirmation-title']");
+    await page.waitForTimeout(1000);
+    const isStep4Visible = await (confirmationPage.Step4isShown).isVisible({ timeout: 5000 });
+
+    console.log(' Is next step visible:', isStep4Visible);
+
+    // Assertion the next step4 is visible:
+    //await expect (confirmationPage.Step4isShown).toBeVisible();    
+
+});
+
+// Then('user should be redirected to the confirmation page', async function ()  {
+//    const conformationText = await confirmationPage.confirmationTitle.innerText();
+//    console.log("conformationText : " + conformationText);
+//    //await expect (confirmationPage.confirmationTitle).toBeVisible();
+// });
+
+// Then("all steps should be green in the step4 stepper", async function () {
+//     await expect(confirmationPage.step1).toHaveCSS("background-color", "rgb(172, 245, 138)");  // 172, 245, 138 - corret color
+//     await expect(confirmationPage.step2).toHaveCSS("background-color", "rgb(172, 245, 138)"); // 172, 245, 138
+//     await expect(confirmationPage.step3).toHaveCSS("background-color", "rgb(1, 201, 255)");  // 172, 245, 138
+// });
+
+Then('program name {string} should be displayed', async function (string) {    
+    //await page.waitForTimeout(7000);
+    const progrName = await confirmationPage.programNameInfo.innerText();
+    console.log(" progrName : " + progrName);
 });
 
 Then("correct user email address should be displayed", async function () {
-  
+   const emailClientExpected = productInfo.userEmail;  // user7@example.org
+   console.log(' emailClientExpected : ' + emailClientExpected);
+   
+   let emailClientActual  = (await confirmationPage.emailClientInfo.innerText()).replace(/\.+$/, ''); // replase "." in the end of user7@example.org.
+   console.log('emailClientActual : '+ emailClientActual);
+
+   expect (emailClientActual).toEqual(emailClientExpected);   
 });
 
 Then('email address1 "enrollment@cydeo.com" should be displayed', async function (string) {

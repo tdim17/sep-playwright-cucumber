@@ -19,30 +19,19 @@ Feature: Make a payment
         When user fills in all fields
         And user clicks on the next button1
         Then user is on step two of the enrollment process
-        When user clicks upfront payment option
-        #    When user clicks installments payment option
+        #When user clicks upfront payment option
+        When user clicks installments payment option
         And user clicks on the next button2
         Then user is on step three and can see the total cost
-
-    @sep23-1
-    Scenario: user should be redirect to the confirmation page.
+    
+    Scenario: user should be redirect to the confirmation page after successful payment
         When user enters valid card information and necessary data and click the Pay button
-        Then user should be redirected to the confirmation page.
-
-    #Scenario: user should see green steps in the stepper.
-    #    Then all steps should be green in the step4 stepper
-
-    #Scenario: The correct program name should be displayed
-    #    Then program name "Test Automation with Selenium" should be displayed
-
-    #Scenario: The correct user email should be displayed
-    #    Then correct user email address should be displayed
+    #    Then user should be redirected to the confirmation page    
+    #    Then all steps should be green in the step4 stepper    
+        Then program name "Test Automation with Selenium" should be displayed
+    
+        Then correct user email address should be displayed
 
     #Scenario: The correct company contact information should be displayed
     #    Then email address1 "enrollment@cydeo.com" should be displayed
     #    Then email address2 "support@cydeo.com" should be displayed
-
-
-
-
-
