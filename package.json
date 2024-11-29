@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cucumber-js",
-    "test:tag": "npx cucumber-js    --tags @wip     ",
+    "test:tag": "npx cucumber-js    --tags @sep10    ",
     "test:smoke": "npx cucumber-js --tags @smoke",
     "Mac-open:report": "open reports/cucumber-report.html",
     "Windows-open:report": "start reports/cucumber-report.html"
@@ -15,11 +15,11 @@
   "description": "",
   "type": "module",
   "devDependencies": {
-    "@playwright/test": "^1.48.2",
-    "@types/node": "^22.7.4"
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.9.1"
   },
   "dependencies": {
     "@cucumber/cucumber": "^11.0.1",
     "cucumber-html-reporter": "^6.0.0"
-  }
+  } 
 }

@@ -1,4 +1,4 @@
-@sep08
+@sep08 @wip
 Feature: Display the steps of the checkout process
 
     As a customer, I should be able to know where I am in the checkout process using the stepper.
@@ -13,9 +13,9 @@ Feature: Display the steps of the checkout process
     Background:
         Given user is on the enrollment page
 
-
+    
     Scenario: verify that the steps of the checkout process are displayed correctly
-        Given user is on the step one and 'Test Automation with Selenium' title is displayed
+        Given user is on the step one and 'Test Automation with Selenium' title is displayed    
         Then '1-Start Application' is displayed on the stepper
         And  '2-Payment Plan' is displayed on the stepper
         And  '3-Review' is displayed on the stepper

@@ -2,9 +2,8 @@ import { LeftMainPage } from "./pages/LeftMainPage.js";
 import { PaymentPlanPage } from "./pages/PaymentPlanPage.js";
 import { StartApplicationPage } from "./pages/StartApplicationPage.js";
 import { ReviewPaymentPage } from "./pages/ReviewPaymentPage.js";
+import { ConfirmationPage } from "./pages/ConfirmationPage.js";
 // Import OTHER PAGES CLASSES HERE...
-
-
 
 /**
  * @type {import('./pages/LeftMainPage.js').LeftMainPage}
@@ -30,25 +29,26 @@ export let reviewPaymentPage;
  * @type {import('playwright').Page}
  */
 export let page;
+
 // ADD OTHER PAGE CLASS REFERENCES HERE...
 
-
-
+/**
+ * @type {import('./pages/ConfirmationPage.js').ConfirmationPage}
+ */
+export let confirmationPage;
 
 /**
  * Initializes the global page elements and instances for the automation framework.
- * 
+ *
  * @param {import('playwright').Page} argPage - The Playwright Page instance to be used for interacting with the web pages.
  * @returns {void} This function does not return any value.
  */
 export const initElements = (argPage) => {
-    page = argPage;
-    leftMainPage = new LeftMainPage(page);
-    paymentPlanPage = new PaymentPlanPage(page);
-    startApplicationPage = new StartApplicationPage(page);
-    reviewPaymentPage = new ReviewPaymentPage(page);
-    // INITIALIZE PAGE INSTANCES HERE...
-
-
-
+  page = argPage;
+  leftMainPage = new LeftMainPage(page);
+  paymentPlanPage = new PaymentPlanPage(page);
+  startApplicationPage = new StartApplicationPage(page);
+  reviewPaymentPage = new ReviewPaymentPage(page);
+  // INITIALIZE PAGE INSTANCES HERE...
+  confirmationPage = new ConfirmationPage(page);
 };

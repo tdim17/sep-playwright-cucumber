@@ -23,7 +23,7 @@ export class StartApplicationPage extends BasePage {
     this.lastNameInputBox = page.locator(
       "//input[@formcontrolname='lastName']"
     );
-    this.emailInputBox = page.locator("//input[@formcontrolname='email']");
+    this.emailInputBox = page.locator("//input[@id='mat-input-2']");
     this.phoneNumberInputBox = page.locator(
       "//input[@formcontrolname='phoneNumber']"
     );

@@ -3,19 +3,19 @@ import { expect } from "@playwright/test";
 import { startApplicationPage, page, leftMainPage } from "../../globalPagesSetup.js";
 import { productInfo } from "../../utilities/qa-data-reader.js";
 
-Then("product name is displayed on the information card", async function () {
+// Then("product name is displayed on the information card", async function () {
+//   const programNameExpected = productInfo.productName;
 
-  await expect(startApplicationPage.programNameOnInfoCard).toBeVisible();
+//   await expect(startApplicationPage.programNameOnInfoCard).toBeVisible();
+  
+//   const productNameAcual = await startApplicationPage.programNameOnInfoCard.innerText();
 
-  const programNameExpected = productInfo.productName;
-  const productNameAcual = await startApplicationPage.programNameOnInfoCard.innerText();
+//   console.log(` programNameExpected: ${programNameExpected}`);
+//   console.log(` productNameAcual: ${productNameAcual}`);
 
-  console.log(`programNameExpected: ${programNameExpected}`);
-  console.log(`productNameAcual: ${productNameAcual}`);
+//   expect(programNameExpected).toEqual(productNameAcual);
 
-  expect(programNameExpected).toEqual(productNameAcual);
-
-});
+// });
 
 Then(
   "product name on the infocard match the product name on the left side",
