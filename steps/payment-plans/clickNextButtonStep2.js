@@ -24,8 +24,8 @@ When("user clicks upfront payment option", async function () {
 });
 
 Then("the next button2 is enabled", async function () {
-  //await expect(paymentPlanPage.activeNextButton).toBeVisible();
-  //await expect (paymentPlanPage.activeNextButton).toBeEnabled();
+  await expect(paymentPlanPage.activeNextButton).toBeVisible();
+  await expect (paymentPlanPage.activeNextButton).toBeEnabled();
 });
 
 When("user clicks installments payment option", async function () {

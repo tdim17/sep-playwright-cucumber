@@ -1,4 +1,4 @@
-@sep14 @wip
+@sep14 @well
 Feature: Selecting a price plan
 
     As a customer, I want to be able to Choose a payment plan from the available options 
@@ -16,7 +16,7 @@ Feature: Selecting a price plan
     And user fills in all fields
     And user clicks on the next button1
 
-    @sep14-1 @error
+    @sep14-1
     Scenario: User can select upfront payment plan, it should be highlighted, the next button should become active and user can change selected plan
         Given user is on step two of the enrollment process
         And the next button2 is disabled by default
@@ -28,7 +28,7 @@ Feature: Selecting a price plan
         Then the next button2 is enabled
 
 
-    @sep14-2 @error
+    @sep14-2
     Scenario: User can select installments payment plan, it should be highlighted, the next button should become active and user can change selected plan
         Given user is on step two of the enrollment process
         And the next button2 is disabled by default
