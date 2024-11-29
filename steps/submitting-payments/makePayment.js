@@ -38,7 +38,7 @@ When("user enters valid card information and necessary data and click the Pay bu
     });
 
     await expect(reviewPaymentPage.payButton).toBeEnabled();
-
+    //await page.waitForTimeout(7000);
     let payButton = page.locator("//button[@type='button']");
     await payButton.click();
 
@@ -75,7 +75,7 @@ Then("all steps should be green in the step4 stepper", async function () {
 });
 
 Then('program name {string} should be displayed', async function (string) {    
-    await page.waitForTimeout(7000);
+    await page.waitForTimeout(100);
     const progrName = await confirmationPage.programNameInfo.innerText();
     console.log(" Program Name        : " + progrName);
 });

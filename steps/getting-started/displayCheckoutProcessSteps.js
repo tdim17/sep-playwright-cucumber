@@ -5,21 +5,29 @@ import { productInfo } from "../../utilities/qa-data-reader.js";
 import { text } from "stream/consumers";
 
 Given("user is on the step one and 'Test Automation with Selenium' title is displayed", async function () {
-   const programNameOnInfoCardExpected = "Test Automation with Selenium";
-   const programNameOnInfoCardActual = await (startApplicationPage.programNameOnInfoCard).textContent();
-   // console.log("");
-   // console.log(`Actual title: ${programNameOnInfoCardActual}`);
-   await expect (programNameOnInfoCardActual).toEqual(programNameOnInfoCardExpected);
+
+   const productNameExpected = productInfo.productName;
+
+   await expect(startApplicationPage.programNameOnInfoCard).toBeVisible();
+   
+   const productNameAcual = await startApplicationPage.programNameOnInfoCard.innerText();
+
+   console.log("-----");
+   console.log(` productNameAcual: ${productNameAcual}`);
+   expect (productNameAcual).toEqual(productNameExpected);
+    
+
+
 });
 Then("'1-Start Application' is displayed on the stepper", async function () {
     const number1textActual = await (startApplicationPage.startApplicationStepCircle).textContent();
-    // console.log("");
-    // console.log(`Actual number1text: ${number1textActual}`);
+    console.log("");
+    console.log(`Actual number1text: ${number1textActual}`);
     const number1textExpected = "1";
 
     const startApplicationTextActual = await (startApplicationPage.startApplicationText).textContent();
-    // console.log("");
-    // console.log(`Actual startApplicationText: ${startApplicationTextActual}`);
+    console.log("");
+    console.log(`Actual startApplicationText: ${startApplicationTextActual}`);
     const startApplicationTextExpected = "Start Application";
 
     expect(number1textActual).toEqual(number1textExpected);
