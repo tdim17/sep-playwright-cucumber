@@ -9,7 +9,7 @@ export class ConfirmationPage extends BasePage {
 
     // Unique
     this.confirmationTitle = page.locator(
-      "//div[@class = 'confirmation-title']"
+      "//p[@class = 'confirmation-title']"
     );
     // Unique
     this.Step4isShown = page.locator(
@@ -33,18 +33,18 @@ export class ConfirmationPage extends BasePage {
       "//div[@class='payment-confirmation']//span[@class='purplish']"
     );
     // works for DOM
-    this.emaiSupport1 = page.locator(
+    this.emailSupport1 = page.locator(
       "(//div[@class='support']//span[@class='support-email'])[1]"
     );
     // works for DOM  
-    this.emaiSupport2 = page.locator(
+    this.emailSupport2 = page.locator(
       "(//div[@class='support']//span[@class='support-email'])[2]"
     );
     // works for DOM
-    this.step1 = page.locator("//div[@class='step-circle'][contains(.,'1')]");
-    this.step2 = page.locator("//div[@class='step-circle'][contains(.,'2')]");
-    this.step3 = page.locator("//div[@class='step-circle'][contains(.,'3')]");
-    this.UpfrontText = page.locator("//span[@class='payment-type']");
+    // this.step1 = page.locator("//div[@class='step-circle'][contains(.,'1')]");
+    // this.step2 = page.locator("//div[@class='step-circle'][contains(.,'2')]");
+    // this.step3 = page.locator("//div[@class='step-circle'][contains(.,'3')]");
+    // this.UpfrontText = page.locator("//span[@class='payment-type']");
 
 
 

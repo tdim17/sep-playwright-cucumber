@@ -7,6 +7,10 @@ Given("user is on the enrollment page", async function () {
   await startApplicationPage.login();
 });
 
+Given("user is on the enrollment page option2", async function () {
+  await page.goto('https://automation-user:123abc@qa.sep.tdtm.cydeo.com/taws');
+});
+
 Then("the program start date is displayed", async function () {
   await expect(startApplicationPage.programStartDate).toBeVisible();
 });

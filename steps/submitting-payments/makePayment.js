@@ -1,6 +1,6 @@
 import { Given, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { reviewPaymentPage, page, confirmationPage } from "../../globalPagesSetup.js";
+import { reviewPaymentPage, page, confirmationPage, paymentPlanPage } from "../../globalPagesSetup.js";
 import { productInfo } from "../../utilities/qa-data-reader.js";
 
 When("user enters valid card information and necessary data and click the Pay button", async function () {
@@ -8,12 +8,26 @@ When("user enters valid card information and necessary data and click the Pay bu
     //let emailUser = productInfo.userEmail;
     //console.log("emailUser =>" + emailUser);
 
-    await reviewPaymentPage.cardNumberInput.fill(process.env.CARD_NUMBER);
-    await reviewPaymentPage.expiryDateInput.fill(process.env.EXPIRATION_DATE);
-    await reviewPaymentPage.cvcInput.fill(process.env.CVC);
-    await reviewPaymentPage.zipCodeInput.fill(process.env.ZIP_CODE);
+    let iframeBlock = page.frameLocator("//iframe[@title='Secure payment input frame']");
+
+    let cardNumberInputFrame = iframeBlock.locator("(//input[@type='text'])[1]");
+    await cardNumberInputFrame.fill(process.env.CARD_NUMBER);  
+    
+    let expiryDateInputFrame = iframeBlock.locator("(//input[@type='text'])[2]");
+    await expiryDateInputFrame.fill(process.env.EXPIRATION_DATE);
+
+    let cvcInputFrame = iframeBlock.locator("(//input[@type='text'])[3]");
+    await cvcInputFrame.fill(process.env.CVC);
+
+    let zipCodeInputFrame = iframeBlock.locator("(//input[@type='text'])[4]");
+    await zipCodeInputFrame.fill(process.env.ZIP_CODE);
+
     await reviewPaymentPage.termsAndConditionsCheckbox.click();
-    await page.waitForTimeout(1000);
+    
+    // await page.waitForTimeout(2000);  
+   
+
+    //await expect(reviewPaymentPage.payButton).toBeEnabled();
     //await reviewPaymentPage.payButton.click();
     //await reviewPaymentPage.payButton.dispatchEvent("click");
 
@@ -24,35 +38,46 @@ When("user enters valid card information and necessary data and click the Pay bu
     });
 
     await expect(reviewPaymentPage.payButton).toBeEnabled();
-    
-    await page.click("//button[@type='button']", {force: true}); 
-    //await page.waitForSelector("//div[@class = 'confirmation-title']");
-    await page.waitForTimeout(1000);
-    const isStep4Visible = await (confirmationPage.Step4isShown).isVisible({ timeout: 5000 });
 
-    console.log(' Is next step visible:', isStep4Visible);
+    let payButton = page.locator("//button[@type='button']");
+    await payButton.click();
+
+
+    
+    //await page.click("//button[@type='button']", {force: true}); 
+    //await reviewPaymentPage.payButton.click();
+    //await page.waitForSelector("//div[@class = 'confirmation-title']");
+    //await page.waitForTimeout(1000);
+
+    // const isStep4Visible = await (confirmationPage.Step4isShown).isVisible({ timeout: 5000 });
+    // console.log(' Is next step visible:', isStep4Visible);
 
     // Assertion the next step4 is visible:
-    //await expect (confirmationPage.Step4isShown).toBeVisible();    
+    await expect (confirmationPage.Step4isShown).toBeVisible();
+    console.log(' ConfirmationPage.Step4isShown  is Visible');
+
+    
+
 
 });
 
-// Then('user should be redirected to the confirmation page', async function ()  {
-//    const conformationText = await confirmationPage.confirmationTitle.innerText();
-//    console.log("conformationText : " + conformationText);
-//    //await expect (confirmationPage.confirmationTitle).toBeVisible();
-// });
+Then('user should be redirected to the confirmation page', async function ()  {
+    const conformationText = await confirmationPage.confirmationTitle.innerText();
+    console.log(" ConformationText    : " + conformationText);
+    //await expect (confirmationPage.confirmationTitle).toBeVisible();
+});
 
-// Then("all steps should be green in the step4 stepper", async function () {
-//     await expect(confirmationPage.step1).toHaveCSS("background-color", "rgb(172, 245, 138)");  // 172, 245, 138 - corret color
-//     await expect(confirmationPage.step2).toHaveCSS("background-color", "rgb(172, 245, 138)"); // 172, 245, 138
-//     await expect(confirmationPage.step3).toHaveCSS("background-color", "rgb(1, 201, 255)");  // 172, 245, 138
-// });
+Then("all steps should be green in the step4 stepper", async function () {
+    let collorGreen = "rgb(172, 245, 138)";
+    await expect(paymentPlanPage.step1).toHaveCSS("background-color", collorGreen);
+    await expect(paymentPlanPage.step2).toHaveCSS("background-color", collorGreen);
+    await expect(paymentPlanPage.step3).toHaveCSS("background-color", collorGreen);
+});
 
 Then('program name {string} should be displayed', async function (string) {    
-    //await page.waitForTimeout(7000);
+    await page.waitForTimeout(7000);
     const progrName = await confirmationPage.programNameInfo.innerText();
-    console.log(" progrName : " + progrName);
+    console.log(" Program Name        : " + progrName);
 });
 
 Then("correct user email address should be displayed", async function () {
@@ -60,7 +85,7 @@ Then("correct user email address should be displayed", async function () {
    console.log(' emailClientExpected : ' + emailClientExpected);
    
    let emailClientActual  = (await confirmationPage.emailClientInfo.innerText()).replace(/\.+$/, ''); // replase "." in the end of user7@example.org.
-   console.log('emailClientActual : '+ emailClientActual);
+   console.log('emailClientActual   : '+ emailClientActual);
 
    expect (emailClientActual).toEqual(emailClientExpected);   
 });
