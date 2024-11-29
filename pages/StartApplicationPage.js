@@ -95,6 +95,12 @@ export class StartApplicationPage extends BasePage {
 
     this.returnPolicyText = page.locator("//span[@class='info-primary' and text()='100% refund']");
 
+    // element of dropdown options:
+    this.dropdownOptions = page.locator("mat-option");
+
+    // form
+    this.applicationForm = page.locator("//form");
+
 
 
 
