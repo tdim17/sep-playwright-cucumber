@@ -1,4 +1,4 @@
-@sep23
+@sep23 @well
 Feature: Make a payment
 
     As a customer, I should be able to make payments so I can enroll in the program.
