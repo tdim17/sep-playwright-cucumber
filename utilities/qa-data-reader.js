@@ -47,6 +47,7 @@ class Price {
  * @property {string} programId
  * @property {string} programCode
  * @property {string} programName
+ * @property {string} userEmail
  * @property {string} startDate
  * @property {string} refundDate
  * @property {string} externalUrl
@@ -69,6 +70,7 @@ class Product {
     programId,
     programCode,
     programName,
+    userEmail,
     startDate,
     refundDate,
     externalUrl,
@@ -83,6 +85,7 @@ class Product {
     this.programId = programId;
     this.programCode = programCode;
     this.programName = programName;
+    this.userEmail = userEmail;
     this.startDate = startDate;
     this.refundDate = refundDate;
     this.externalUrl = externalUrl;

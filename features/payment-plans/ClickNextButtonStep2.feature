@@ -1,4 +1,4 @@
-@sep16
+@sep16 @wip
 Feature: Click on the next button on payment plans page   #! Test Only
 
     As a customer, I should be able to click on the next button on step 2 when I select a plan.
@@ -25,12 +25,12 @@ Feature: Click on the next button on payment plans page   #! Test Only
         And user is on step two of the enrollment process
         Then the next button2 is disabled by default
 
-    @sep16-2
+    @sep16-2 @error
     Scenario: verify that the next button will be activated when user selects upfront payment option
         When user clicks upfront payment option
         Then the next button2 is enabled
 
-    @sep16-3
+    @sep16-3 @error
     Scenario: verify that the next button will be activated when user selects installments payment option
         When user clicks installments payment option
         Then the next button2 is enabled

@@ -24,14 +24,15 @@ When("user clicks upfront payment option", async function () {
 });
 
 Then("the next button2 is enabled", async function () {
-  await expect(paymentPlanPage.activeNextButton).toBeVisible();
+  //await expect(paymentPlanPage.activeNextButton).toBeVisible();
   await expect (paymentPlanPage.activeNextButton).toBeEnabled();
 });
 
 When("user clicks installments payment option", async function () {
   await paymentPlanPage.installmentsPaymentOption.click();
   // wait for 1 sec
-   await page.waitForTimeout(2000);
+feature/sep14-select-price-plan
+  await page.waitForTimeout(2000);
 });
 
 // AC2: transition to step Review

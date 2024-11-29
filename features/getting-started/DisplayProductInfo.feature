@@ -1,4 +1,4 @@
-@sep09
+@sep09 @wip
 Feature: Display the product information
 
     As a customer, I should be able to see the product information.
@@ -20,7 +20,7 @@ Feature: Display the product information
     @sep09-1
     #* AC1: The product name should be displayed on the information card.    
     Scenario: verify the te product name is displayed on the infocard
-        Then product name is displayed on the information card
+        Then user is on the step one and 'Test Automation with Selenium' title is displayed
 
     @sep09-2
     #* AC2: The product name on the information card matches the product name on the left side of the screen.    

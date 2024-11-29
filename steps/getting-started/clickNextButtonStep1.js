@@ -6,7 +6,7 @@ import { productInfo } from "../../utilities/qa-data-reader.js";
 Given("user fills in only the required fields", async function () {
     await startApplicationPage.firstNameInputBox.fill("John");
     await startApplicationPage.lastNameInputBox.fill("Doe");
-    await startApplicationPage.emailInputBox.fill("john@example.com");
+    await startApplicationPage.emailInputBox.fill(productInfo.userEmail);
     await startApplicationPage.phoneNumberInputBox.fill("555-555-5555");
   });
 
@@ -22,7 +22,7 @@ Given("user fills in only the required fields", async function () {
   Given("user fills in all fields", async function () {
     await startApplicationPage.firstNameInputBox.fill("Monica");
     await startApplicationPage.lastNameInputBox.fill("Bellucci");
-    await startApplicationPage.emailInputBox.fill("monica@example.belucci.com");
+    await startApplicationPage.emailInputBox.fill(productInfo.userEmail);
     await startApplicationPage.phoneNumberInputBox.fill("777-771-7171");
     await startApplicationPage.howDidYouHearAboutUsDropDown.click();
     await startApplicationPage.googleOption.click();
