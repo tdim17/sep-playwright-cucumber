@@ -1,4 +1,4 @@
-@sep11 @wipErr
+@sep11 @well
 Feature: Program start dates and Refund dates
 
     As a customer, I want to see the program start dates and refund policy details before enrolling
@@ -20,7 +20,7 @@ Feature: Program start dates and Refund dates
     @sep11-2
     Scenario: Verifi that the program start date and refund date are correct    
         Then the displayed start date is correct
-    #    Then the displayed refund date are correct
+        Then the displayed refund date are correct
 
 
 
