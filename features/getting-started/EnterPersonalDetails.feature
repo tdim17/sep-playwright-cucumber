@@ -1,4 +1,4 @@
-@sep10 @wip
+@sep10 @well
 Feature: Enter my Personal details
 
     As a customer, I should be able to enter my Personal details.

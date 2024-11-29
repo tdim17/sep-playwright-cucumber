@@ -1,4 +1,4 @@
-@sep07 @wip
+@sep07 @well
 Feature: View Product Landing Page
 
     As a customer, I should be able to see the product landing page.

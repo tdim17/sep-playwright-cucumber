@@ -1,4 +1,4 @@
-@sep09 @wip
+@sep09 @well
 Feature: Display the product information
 
     As a customer, I should be able to see the product information.
