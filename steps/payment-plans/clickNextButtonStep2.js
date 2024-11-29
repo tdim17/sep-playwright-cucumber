@@ -20,7 +20,7 @@ Then("the next button2 is disabled by default", async function () {
 When("user clicks upfront payment option", async function () {
   await paymentPlanPage.upfrontPaymentOption.click();
   // wait for 1 sec
-  await page.waitForTimeout(3000);
+   await page.waitForTimeout(2000);
 });
 
 Then("the next button2 is enabled", async function () {
@@ -31,6 +31,7 @@ Then("the next button2 is enabled", async function () {
 When("user clicks installments payment option", async function () {
   await paymentPlanPage.installmentsPaymentOption.click();
   // wait for 1 sec
+feature/sep14-select-price-plan
   await page.waitForTimeout(2000);
 });
 
