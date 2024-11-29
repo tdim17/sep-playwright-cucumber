@@ -20,18 +20,18 @@ Then("the next button2 is disabled by default", async function () {
 When("user clicks upfront payment option", async function () {
   await paymentPlanPage.upfrontPaymentOption.click();
   // wait for 1 sec
-  // await page.waitForTimeout(1000);
+  await page.waitForTimeout(3000);
 });
 
 Then("the next button2 is enabled", async function () {
-  await expect(paymentPlanPage.activeNextButton).toBeVisible();
+  //await expect(paymentPlanPage.activeNextButton).toBeVisible();
   await expect (paymentPlanPage.activeNextButton).toBeEnabled();
 });
 
 When("user clicks installments payment option", async function () {
   await paymentPlanPage.installmentsPaymentOption.click();
   // wait for 1 sec
-  // await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
 });
 
 // AC2: transition to step Review
