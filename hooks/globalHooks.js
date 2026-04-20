@@ -3,8 +3,6 @@ import { chromium, firefox, webkit } from "@playwright/test";
 import { initElements } from "../globalPagesSetup.js";
 import fs from 'fs';
 import path from 'path';
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 const BROWSER_TYPE = "chrome";
 const HEADLESS_MODE = false;

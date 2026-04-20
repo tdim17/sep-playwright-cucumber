@@ -21,7 +21,7 @@ Feature: Error message for the invalid CVC number
 
     Scenario:
         When user enters the short CVC number
-        Then CVC error message "Your card’s security code is incomplete." should be thrown
+        Then CVC error message "Your card's security code is incomplete." should be thrown
 
 
 

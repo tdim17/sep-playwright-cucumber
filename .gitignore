@@ -4,6 +4,3 @@ node_modules/
 /playwright/.cache/
 /test-results/
 /playwright-report/
-.DS_Store
-hooks/state.json
-.env

@@ -28,13 +28,13 @@ npm install @playwright/test @cucumber/cucumber cucumber-html-reporter
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/<your-username>/sep-automation.git
+git clone https://github.com/<your-username>/sep-playwright-cucumber.git
 ```
 
 ### 2. Open the Folder in VS Code
 2.1 Open the VS Code App  
 2.2 Go to `File` and click `Open Folder`  
-2.3 Select the cloned `sep-automation` folder
+2.3 Select the cloned `sep-playwright-cucumber` folder
 
 ### 3. Install Dependencies
 ```sh
@@ -52,7 +52,12 @@ Install the following extensions for a better development experience:
 - Playwright Snippets
 - Tabnine
 
-### 5. Add Environment Variables to VS Code User Settings (`settings.json`)
+### 5. Add Environment Variables
+
+Copy `.env.example` to `.env` and fill in the real values:
+```sh
+cp .env.example .env
+```
 
 Open VS Code user settings (`Ctrl+Shift+P` → `Open User Settings JSON`) and add the following environment variables:
 
