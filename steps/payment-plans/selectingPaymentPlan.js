@@ -5,9 +5,9 @@ import { productInfo } from "../../utilities/qa-data-reader.js";
 
 
 Then("upfront payment option should be highlighted", async function () {
-    expect (paymentPlanPage.upfrontPaymentFrame).toHaveAttribute("ng-reflect-ng-class", "plan-selected") 
+    expect (paymentPlanPage.upfrontPaymentFrame).toHaveAttribute('aria-expanded', 'true')
 });
 
 Then("installments payment option should be highlighted", async function () {
-    expect (paymentPlanPage.installmentsPaymentFrame).toHaveAttribute("ng-reflect-ng-class", "plan-selected");
+    expect (paymentPlanPage.installmentsPaymentFrame).toHaveAttribute('aria-expanded', 'true')
 }); 

@@ -1,10 +1,10 @@
 {
-  "name": "sep-automation",
+  "name": "sep-playwright-cucumber-git",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "npx cucumber-js",
-    "test:tag": "npx cucumber-js    --tags @well   ",
+    "test:tag": "npx cucumber-js --tags @sep16",
     "test:smoke": "npx cucumber-js --tags @smoke",
     "Mac-open:report": "open reports/cucumber-report.html",
     "Windows-open:report": "start reports/cucumber-report.html"
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@cucumber/cucumber": "^11.0.1",
-    "cucumber-html-reporter": "^6.0.0"
-  } 
+    "cucumber-html-reporter": "^6.0.0",
+    "dotenv": "^16.0.0"
+  }
 }

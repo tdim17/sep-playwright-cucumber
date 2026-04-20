@@ -79,6 +79,9 @@ const invalidEmails = [
       //'user@domain.cóm', // проходит валидацию
       //'user@example.com ', // проходит валидацию
       //' user@example.com', // проходит валидацию
+      //user?@example.4vm', // проходит валидацию
+      //dmi3?tte@example.v, // проходит валидацию
+      //r?tte@exam&p^^le.v, // проходит валиадацию
     ];    
 
     // for Invalid emails

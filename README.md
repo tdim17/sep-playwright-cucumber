@@ -3,10 +3,10 @@
 The Self Enrollment Portal System is designed to facilitate a secure and efficient checkout experience for customers purchasing products or services online. This system encompasses features such as product selection, personal details entry, payment plan selection, terms and conditions agreement, and payment processing.
 
 ## Table of Contents
-1. [Prerequisites](#Prerequisites)
+1. [Prerequisites](#prerequisites)
 2. [Environment Setup](#environment-setup)
 3. [Framework Structure and Usage](#framework-structure-and-usage)
-4. [Project and Git Workflow](#project-and-git-workflow)<br>
+4. [Project and Git Workflow](#project-and-git-workflow)
 
 ## Prerequisites
 
@@ -23,23 +23,23 @@ To install necessary libraries, open your terminal and run:
 ```sh
 npm install @playwright/test @cucumber/cucumber cucumber-html-reporter
 ```
-<br>
 
 ## Environment Setup
 
-### 1. Download the "sep-automation" Project Zip Folder
-1.1 Go to your LMS (CYDEO Learning APP)  
-1.2 Navigate to the "JavaScript and Playwright" course on your LMS  
-1.3 Expand the "Project Implementation" module  
-1.4 Click the "sep-automation" folder and download it
+### 1. Clone the Repository
+```sh
+git clone https://github.com/<your-username>/sep-automation.git
+```
 
-### 2. Unzip the Downloaded Folder
-Unzip the downloaded folder and move it to your "VS Code Projects" folder.
+### 2. Open the Folder in VS Code
+2.1 Open the VS Code App  
+2.2 Go to `File` and click `Open Folder`  
+2.3 Select the cloned `sep-automation` folder
 
-### 3. Open the Folder in VS Code
-3.1 Open the VS Code App  
-3.2 Go to `File` and click `Open Folder`  
-3.3 Select the "sep-automation" folder under the VS Code Projects
+### 3. Install Dependencies
+```sh
+npm install
+```
 
 ### 4. Install VS Code Extensions
 Install the following extensions for a better development experience:
@@ -52,89 +52,87 @@ Install the following extensions for a better development experience:
 - Playwright Snippets
 - Tabnine
 
-### 7. Add Environment Variables to User Settings Json File (settings.json) in VS Code
-7.1 Go to your LMS (CYDEO Learning APP).<br>
-7.2 Navigate to the "JavaScript and Playwright" course on your LMS.<br>
-7.3 Expand the "Project Implementation" module.<br>
-7.4 Download the "Environment Variables" text file.<br>
-7.5 Open the Environment Variables.txt file.<br>
-7.6 Add the credentials & [test card](https://docs.stripe.com/testing) info to the settings.json file of VS Code user settings as environment variables<br>
+### 5. Add Environment Variables to VS Code User Settings (`settings.json`)
 
-### 8. Run the "test:tag" Script
-Go to the package.json file and run the "test:tag" script to verify the setup.<br>
+Open VS Code user settings (`Ctrl+Shift+P` → `Open User Settings JSON`) and add the following environment variables:
+
+```json
+"terminal.integrated.env.windows": {
+  "SEP_USERNAME": "<basic-auth-username>",
+  "SEP_PASSWORD": "<basic-auth-password>",
+  "CARD_NUMBER": "<test-card-number>",
+  "EXPIRATION_DATE": "<test-card-expiration-date>",
+  "CVC": "<test-card-cvc>",
+  "ZIP_CODE": "<test-card-zip-code>"
+}
+```
+
+> For test card details see: [Stripe Testing Documentation](https://docs.stripe.com/testing)
+
+### 6. Run the `test:tag` Script
+Go to the `package.json` file and run the `test:tag` script to verify the setup.
 
 ## Framework Structure and Usage
 
-### 1. The `features` folder
-This folder is used for storing the feature files, each feature file has a unique tag name which can be used to run specific feature in `package.json` file
+### 1. The `features` Folder
+This folder is used for storing the feature files. Each feature file has a unique tag name which can be used to run a specific feature via the `package.json` scripts.
 
 ### 2. The `hooks` Folder
-This folder contains the globalHooks for cucumber step definitions.<br> It also has the playwright utility for page & browser
+This folder contains the `globalHooks.js` for Cucumber step definitions. It manages browser lifecycle (init and close) for each scenario and handles failure screenshots.
 
 ### 3. The `pages` Folder
-This folder is used for storing webelements of the pages.<br>
-BasePage must be the parent class of all the page classes.<br>
-Every single page class must be added and initialized in the `globalPagesSetup.js` to be able to locate elements of each pages by using same page fixture of playwright
+This folder stores web element locators and page actions.  
+`BasePage` must be the parent class of all page classes.  
+Every page class must be added and initialized in `globalPagesSetup.js`.
 
 ### 4. The `steps` Folder
-This folder is used for storing the step definitions of the features.<br>
-The file names of the steps should match with its feature file's name.<br>
+This folder stores step definitions for the feature files.  
+Step file names should match their corresponding feature file names.
 
 ### 5. `cucumber.cjs` File
-A CommonJS configuration file for CucumberJS, managing settings for BDD-style automated tests. It includes paths for step definitions, support files, plugins, and output formatting options, allowing customization of test execution.
+A CommonJS configuration file for CucumberJS, managing paths for step definitions, support files, plugins, and output formatting options.
 
 ### 6. `package.json` File
-The `package.json` file for the "sep-automation" project includes several key sections:
-
-- **`name`**: Identifies the project as "sep-automation".
-- **`version`**: Marks the current version at "1.0.0".
-- **`main`**: Points to the main entry file of the project, "index.js".
-- **`scripts`**: Defines custom scripts for the project.
-- **`dependencies`**: Lists project dependencies, including Cucumber, Playwright for testing, and dotenv for environment variable management.
-- **`type`**: Specifies the module system, set to "module" for ES Module support.
-
-This setup facilitates BDD-style testing with CucumberJS and Playwright, and includes cross-platform support for viewing test reports.<br>
+Defines project metadata and scripts for running tests and opening reports:
+- `test` — runs all Cucumber scenarios
+- `test:tag` — runs a specific tag (edit the tag in `package.json`)
+- `test:smoke` — runs smoke-tagged scenarios
+- `Mac-open:report` / `Windows-open:report` — opens the HTML report
 
 ## Project and Git Workflow
 
-### 1. Upload the "sep-automation" Project to GitHub
-Create a new repository on GitHub and upload the project.
-### 2. Create a "develop" Branch
-Create a branch named develop in your GitHub repository.
-### 3. Create Feature Branches
-Create separate branches for each feature from the develop branch. Use the following naming convention for feature branches: feature/tagname_feature_name.
-Example: If the tag name of login.feature is @sep01, then the feature branch name should be feature/sep01-login.
-Note: You must create a unique feature branch for every feature file before you work on them.
-### 4. Update the Project
-Update your local repository:
+### 1. Create a `develop` Branch
+Create a branch named `develop` in your GitHub repository.
+
+### 2. Create Feature Branches
+Create separate branches for each feature from the `develop` branch.  
+Naming convention: `feature/tagname_feature_name`  
+Example: for `@sep01` tag → `feature/sep01-login`
+
+### 3. Update the Project
 ```sh
 git fetch
 git pull
 ```
 
-### 5. Checkout the Specific Feature Branch
-Checkout the specific feature branch you need to work on:
+### 4. Checkout the Specific Feature Branch
 ```sh
 git checkout feature/branch_name
 ```
-Double-check the checked-out branch. The bottom left corner of VS Code shows the current branch.
+Double-check the active branch in the bottom-left corner of VS Code.
 
-### 6. Work on the Feature File
-Work on the feature file of the branch you checked out.
+### 5. Work on the Feature File
+Implement the feature file for the branch you checked out.
 
-### 7. Commit and Push Changes
-After fully completing and testing the feature file, commit and push your changes with descriptive commit messages:
+### 6. Commit and Push Changes
 ```sh
 git add .
 git commit -m "Descriptive commit message"
 git push
 ```
 
-Note: This will push to the remote feature branch.
-### 8. Create a Pull Request
-Create a pull request from your remote feature branch to the develop branch.
-### 9. Repeat Steps
-Repeat from step #3 until you finish all the user stories. By following these steps, you will be able to set up, work on, and manage your library automation project efficiently. Happy coding!<br>
+### 7. Create a Pull Request
+Create a pull request from your feature branch to the `develop` branch.
 
-## Authors
-Muhtar - [Muhtar](https://github.com/MuhtarMahmut)
+### 8. Repeat
+Repeat from step 2 until all user stories are complete.
